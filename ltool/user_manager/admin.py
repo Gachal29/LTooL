@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from ltool.user_manager.models import Profile, ScrapboxProjects
+
+admin.site.register(Profile)
+admin.site.register(ScrapboxProjects)
