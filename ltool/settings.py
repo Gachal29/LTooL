@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "ltool.user_manager",
+    "ltool.presentation",
 ]
 
 MIDDLEWARE = [
