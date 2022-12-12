@@ -1,6 +1,8 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from django.utils import timezone
+
+from ltool.consts import MYSELF_PAGE_NAME_CHOICES
 
 
 class Settings(models.Model):
@@ -39,16 +41,10 @@ class Documents(models.Model):
         verbose_name_plural: str = "作成した資料"
 
 
-MYSELF_PAGE_NAME_CHOICES: list[tuple[int, str]] = [
-    (1, "full_name"),
-    (2, "view_name"),
-    (3, "username")
-]
-
 class MyselfPage(models.Model):
     user: models.OneToOneField = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    insert_name: models.IntegerField = models.IntegerField(choices=MYSELF_PAGE_NAME_CHOICES, verbose_name="記載する名前")
+    insert_name: models.CharField = models.CharField(choices=MYSELF_PAGE_NAME_CHOICES, default="full_name", max_length=9, verbose_name="記載する名前")
     insert_icon: models.BooleanField = models.BooleanField(default=True, verbose_name="アイコンを表示")
 
     file: models.FileField = models.FileField(upload_to="documents/myself", verbose_name="自己紹介ファイル")
