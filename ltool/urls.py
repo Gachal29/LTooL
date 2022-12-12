@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
 from django.contrib.auth.views import LogoutView
-from ltool.views import CustomLoginView
+from django.urls import include, path
 
+from ltool.views import CustomLoginView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
