@@ -9,6 +9,30 @@
     <header>
         <div>
             <h1>LTooL</h1>
+
+            {% if request.user.is_authenticated %}
+            <div>
+                <a href=""><img src="/media/{{icon}}"></a>
+            </div>
+            {% endif %}
+
+            {% if not request.user.is_authenticated and not auth_page %}
+            <div>
+                <a href="{% url 'login' %}">ログイン</a>
+                <a href="">ユーザー登録</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if request.user.is_authenticated %}
+            <ul>
+                <a href="{% url 'mypage' %}"><li>マイページ</li></a>
+                <a href=""><li>スケジュール</li></a>
+                <a href=""><li>コンテナ</li></a>
+                <a href=""><li>発表設定</li></a>
+            </ul>
+            {% endif %}
         </div>
     </header>
     <main>
