@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div>
+    <h2>マイページ</h2>
+</div>
+
+<div>
+    {% if documents %}
+        {% for document in documents %}
+        <a href="">
+            <p>{{document.title}}</p>
+            <p>{{document.created_date|date:'Y/m/d'}}</p>
+        </a>
+        {% endfor %}
+    {% else %}
+    <p>作成された資料はありません。</p>
+    {% endif %}
+</div>
+{% endblock %}
