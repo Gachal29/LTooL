@@ -12,7 +12,7 @@
 
             {% if request.user.is_authenticated %}
             <div>
-                <a href=""><img src="/media/{{icon}}"></a>
+                <a href="{% url 'profile' %}"><img src="/media/{{icon}}"></a>
             </div>
             {% endif %}
 
