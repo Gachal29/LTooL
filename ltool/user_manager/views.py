@@ -34,6 +34,12 @@ class ProfileView(LoginRequiredMixin, FormView):
         context: dict[str, any] = super().get_context_data(**kwargs)
 
         user: User = self.request.user
+        context["user"] = User.objects.get(user=user)
+
+        print(context["user"].last_name)
+
+        profile: Profile = Profile.objects.get(user=user)
+        context["profile"] = profile
 
         icon: Profile.icon = user_manager_utils.get_icon(user)
         context["icon"] = icon
